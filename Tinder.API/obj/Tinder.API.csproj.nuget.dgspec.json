@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.Api\\Tinder.API.csproj": {}
+    "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.Api\\Tinder.API.csproj": {
+    "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.Api\\Tinder.API.csproj",
+        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj",
         "projectName": "Tinder.API",
-        "projectPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.Api\\Tinder.API.csproj",
+        "projectPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.Api\\obj\\",
+        "outputPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

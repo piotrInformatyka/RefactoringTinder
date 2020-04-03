@@ -10,6 +10,7 @@ namespace Tinder.API.Controllers
 {
     [Route("values")]
     [ApiController]
+
     public class ValuesController : ControllerBase
     {
         private readonly DataContext _context;

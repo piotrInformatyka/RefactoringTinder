@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj": {}
+    "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj": {
+    "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj",
+        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj",
         "projectName": "Tinder.API",
-        "projectPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\Tinder.API.csproj",
+        "projectPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj",
         "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\tinder.api\\obj\\",
+        "outputPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.3, )"
@@ -69,9 +73,17 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

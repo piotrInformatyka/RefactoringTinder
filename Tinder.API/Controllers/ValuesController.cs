@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Tinder.API.Data;
@@ -10,7 +11,7 @@ namespace Tinder.API.Controllers
 {
     [Route("values")]
     [ApiController]
-
+    [Authorize]
     public class ValuesController : ControllerBase
     {
         private readonly DataContext _context;
@@ -24,6 +25,7 @@ namespace Tinder.API.Controllers
             var values = _context.Values.ToList();
             return await Task.FromResult(Ok(values));
         }
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {

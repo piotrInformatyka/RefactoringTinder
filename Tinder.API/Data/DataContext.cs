@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Tinder.API.Controllers;
+using Tinder.API.Models;
 
 namespace Tinder.API.Data
 {
@@ -12,5 +13,6 @@ namespace Tinder.API.Data
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         public DbSet<Value> Values { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

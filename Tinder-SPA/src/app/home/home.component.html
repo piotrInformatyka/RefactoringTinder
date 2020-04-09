@@ -1,0 +1,18 @@
+<div class="containter mt-5">
+    <div *ngIf="!registerMode" style="text-align: center">
+        <h1>Znajdź swoją drugą połówkę</h1>
+        <p class="lead">Wejdź aby zobaczyć swoje dopasowania...Wszystko co musisz zrobić to zarejestrować się</p>
+        <div class="text-align: center">
+            <button class="btn btn-primary btn-lg mr-3" (click)="registerToggle()">Rejestracja</button>
+            <button class="btn btn-info btn-lg">Więcej...</button>
+        </div>
+    </div>
+
+    <div class="containter" *ngIf="registerMode">
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <app-register (cancelRegister)="cancelRegisterMode($event)" ></app-register>
+            </div>
+        </div>
+    </div>
+</div>

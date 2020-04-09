@@ -11,7 +11,7 @@ namespace Tinder.API.Controllers
 {
     [Route("values")]
     [ApiController]
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class ValuesController : ControllerBase
     {
         private readonly DataContext _context;
@@ -19,6 +19,7 @@ namespace Tinder.API.Controllers
         {
             _context = context;
         }
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {

@@ -302,4 +302,9 @@ C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\System.Ide
 C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.dll
 C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Data\UserSeedData.json
+C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\Newtonsoft.Json.Bson.dll
+C:\Users\piotr\source\repos\Tinder\Tinder.API\bin\Debug\netcoreapp3.0\AutoMapper.dll
 C:\Users\piotr\source\repos\Tinder\Tinder.API\obj\Debug\netcoreapp3.0\Tinder.API.MvcApplicationPartsAssemblyInfo.cache

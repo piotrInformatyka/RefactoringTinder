@@ -1,0 +1,51 @@
+[
+  '{{repeat(10)}}',
+  {
+    Username: '{{firstName("female")}}',
+    Password: 'password',
+    Gender: 'kobieta',
+    DateOfBirth: '{{date(new Date(1950,0,1), new Date(1999,11,30), "YYYY-MM-dd")}}',
+    ZodiacSign: '{{random("Baran","Byk", "Ryba","Koziorożec","Waga", "Strzelec")}}',
+    Created: '{{date(new Date(2018,0,1), new Date(2019,11,30), "YYYY-MM-dd")}}',
+    LastActive: '{{date(new Date(2019,0,1), new Date(2019,11,30), "YYYY-MM-dd")}}',
+    City: '{{city}}',
+    Country: '{{country}}',
+    
+    Growth: '{{integer(150,200)}}',
+    EyeColor: '{{random("niebieskie", "brązowe", "zielone"}}',
+    HairColor: '{{random("rude", "brązowe" ,"blond" , "czarne")}}',
+    MartialStatus: 'wolny',
+    Education: '{{random("wyższe", "podstawowe", "średnie")}}',
+    Profession: '{{random("nauczyciel", "profesor", "kierowca", "programista")}}',
+    Children: '{{random("tak","nie")}}',
+    Languages: '{{random("angielski","niemiecki","francuski")}}',
+    
+    Motto: '{{lorem(1 , "sentences")}}',
+    Description:'{{lorem(1 , "paragraphs")}}',
+    Personality:'{{lorem(1 , "sentences")}}',
+    LookingFor:'{{lorem(1 , "paragraphs")}}',
+    
+    Interests:'{{lorem(1 , "sentences")}}',
+    FreeTime:'{{lorem(1 , "sentences")}}',
+    Sports:'{{lorem(1 , "sentences")}}',
+    Movies:'{{lorem(1 , "sentences")}}',
+    Music:'{{lorem(1 , "sentences")}}',
+    
+    ILike:'{{lorem(1 , "sentences")}}',
+    IDoNotLike:'{{lorem(1 , "sentences")}}',
+    MakesMeLaugh:'{{lorem(1 , "sentences")}}',
+    ItFeelsBestIn:'{{lorem(1 , "sentences")}}',
+    FriendsWouldDescribeMe:'{{lorem(1 , "sentences")}}',
+    
+    Photos:[
+      {
+        url: function(num){
+          return 'https://randomuser.me/api/portraits/women/' + num.integer(1,99) + '.jpg';
+      	},
+        isMain: true,
+        description: '{{lorem(1 , "sentences")}}',
+      }
+      ]
+    
+  }
+]

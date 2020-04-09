@@ -15,6 +15,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Tinder.API.Dtos;
+using Tinder.API.Helper;
 
 namespace Tinder.API
 {
@@ -31,6 +34,10 @@ namespace Tinder.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddMvc().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            });
             services.AddControllers();
             services.AddCors(options =>
             {
@@ -39,7 +46,11 @@ namespace Tinder.API
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
+            services.AddTransient<SeedData>();
+            services.AddScoped<IGenericRepository, GenericRepository>();
+            services.AddScoped<IUserRepository, UserRepository>(); 
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -55,19 +66,20 @@ namespace Tinder.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, SeedData seeder)
         {
-            app.UseAuthentication();
-            app.UseAuthorization();
+            seeder.SeedUsers(); 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseCors("CorsPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

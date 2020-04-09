@@ -7,12 +7,18 @@ import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
 import { NavComponent } from './nav/nav.component';
 import { AuthService } from './_services/auth.service';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { UserService } from './_services/user.service';
+import { AlertifyService } from './_services/alertify.service';
 
 @NgModule({
    declarations: [
       AppComponent,
       ValueComponent,
-      NavComponent
+      NavComponent,
+      RegisterComponent,
+      HomeComponent
 
    ],
    imports: [
@@ -21,7 +27,9 @@ import { AuthService } from './_services/auth.service';
       FormsModule
    ],
    providers: [
-      AuthService
+      AuthService,
+      AlertifyService,
+      UserService
    ],
    bootstrap: [
       AppComponent,

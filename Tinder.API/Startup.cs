@@ -18,6 +18,9 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Tinder.API.Dtos;
 using Tinder.API.Helper;
+using System.Net;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 namespace Tinder.API
 {
@@ -72,6 +75,23 @@ namespace Tinder.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler(builder =>
+                {
+                    builder.Run(async context =>
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+                        var error = context.Features.Get<IExceptionHandlerFeature>();
+                        if(error != null)
+                        {
+                            context.Response.AddApplicationError(error.Error.Message);
+                            await context.Response.WriteAsync(error.Error.Message );
+                        }
+                    });
+                });
             }
 
             app.UseHttpsRedirection();

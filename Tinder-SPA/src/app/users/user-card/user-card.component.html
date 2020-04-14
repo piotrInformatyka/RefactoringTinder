@@ -1,0 +1,31 @@
+<div class="card mb-4">
+  <div class="card-body p-2" >
+    <h6 class="card-title text-center mb-1"><i class="fa fa-user"></i>
+      {{user.username}}, {{user.age}}
+    </h6>
+  </div>
+
+<div class="card-img-wrapper">
+  <img src="{{user.photoUrl}}" class="card-img-top" alt="{{user.username}}">
+  <ul class="list-inline text-center user-icons animate">
+    <li class="list-inline-item">
+      <button class="btn btn-warning">
+        <i class="fa fa-heart"></i>
+      </button>
+    </li>
+    <li class="list-inline-item">
+      <button class="btn btn-warning" [routerLink]="['/uzytkownicy/', user.id]" routerLinkActive="router-link-active" >
+        <i class="fa fa-user"></i>
+      </button>
+    </li>
+    <li class="list-inline-item">
+      <button class="btn btn-warning">
+        <i class="fa fa-envelope"></i>
+      </button>
+    </li>
+  </ul>
+</div>
+  <div class="card-body p-0" >
+    <p class="card-text text-center text-muted">{{user.zodiacSign}}</p>
+  </div>
+</div>

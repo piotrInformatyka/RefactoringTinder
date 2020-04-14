@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Tinder.API.Data
 {
-    interface IGenericRepository
+    public interface IGenericRepository
     {
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;

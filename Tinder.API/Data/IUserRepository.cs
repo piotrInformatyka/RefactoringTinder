@@ -6,7 +6,7 @@ using Tinder.API.Models;
 
 namespace Tinder.API.Data
 {
-    public interface IUserRepository
+    public interface IUserRepository : IGenericRepository
     {
         Task<IEnumerable<User>> GetUsers();
         Task<User> GetUser(int id);

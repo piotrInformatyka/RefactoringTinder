@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.model).subscribe(() => {
       this.alertify.success('rejestracja udana');
     }, error => {
-       this.alertify.error('wysąpił błąd w rejestracji');
+       this.alertify.error(error);
 
      });
   }

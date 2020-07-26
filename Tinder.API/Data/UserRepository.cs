@@ -19,12 +19,16 @@ namespace Tinder.API.Data
         { 
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(x => x.Id == id);
             return user;
-        }
-
+        } 
         public async Task<IEnumerable<User>> GetUsers()
         {
             var users = await _context.Users.Include(p => p.Photos).ToListAsync();
             return users;
+        }
+        public async Task<Photo> GetPhoto (int id)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
+            return photo;
         }
     }
 }

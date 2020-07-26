@@ -27,6 +27,9 @@ namespace Tinder.API.Helper
                     opt.MapFrom((src) => src.Birthday.CalculateAge())); 
                cfg.CreateMap<Photo, PhotoForDetailedDto>();
                cfg.CreateMap<UserForUpdate, User>();
+               cfg.CreateMap<Photo, PhotoForReturnDto>();
+               cfg.CreateMap<Photo, PhotoForCreationDto>();
+               cfg.CreateMap<PhotoForCreationDto, Photo>();
            }).CreateMapper();
     }
 }

@@ -16,7 +16,7 @@ export class UserDetailResolver implements Resolve<User>{
     resolve(route: ActivatedRouteSnapshot): Observable<User> {
         return this.userService.getUser(route.params.id).pipe(
             catchError(error => {
-                this.alertify.error('pierdolone gowno');
+                this.alertify.error('Błąd przy pobraniu użytkowników');
                 this.router.navigate(['/uzytkownicy']);
                 return of(null);
             })

@@ -14,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Tinder.API.Data;
 using Tinder.API.Dtos;
 using Tinder.API.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Tinder.API.Controllers
 {
@@ -24,10 +25,12 @@ namespace Tinder.API.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
-        public UserController(IUserRepository repo, IMapper mapper)
+        private readonly IHttpContextAccessor _contextAccessor;
+        public UserController(IUserRepository repo, IMapper mapper, IHttpContextAccessor httpContextAccessor)
         {
             _userRepository = repo;
             _mapper = mapper;
+            _contextAccessor = httpContextAccessor;
         }
         [HttpGet]
         public async Task<IActionResult> GetUsers()
@@ -46,7 +49,8 @@ namespace Tinder.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, [FromBody]UserForUpdate userForUpdateDto)
         {
-            if (id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+            var currentId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (id != currentId)
             {
                 return Unauthorized();
             }

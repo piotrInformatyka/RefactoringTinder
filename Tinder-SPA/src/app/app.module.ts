@@ -30,6 +30,7 @@ import { UserListResolver } from './_resolvers/user-list.resolver';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
+import { environment } from 'src/environments/environment';
 
 
 export function tokenGetter(){
@@ -53,14 +54,7 @@ export function tokenGetter(){
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      JwtModule.forRoot({
-         config:{
-            tokenGetter: tokenGetter,
-            whitelistedDomains: ['localhost:5001'],
-            blacklistedRoutes: ['localhost:5001/auth']
 
-         }
-      }),
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),

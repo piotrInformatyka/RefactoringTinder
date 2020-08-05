@@ -26,10 +26,12 @@ namespace Tinder.API.Helper
                     .ForMember(dest => dest.Age, opt =>
                     opt.MapFrom((src) => src.Birthday.CalculateAge())); 
                cfg.CreateMap<Photo, PhotoForDetailedDto>();
-               cfg.CreateMap<UserForUpdate, User>();
+               cfg.CreateMap<UserForUpdate, User>()
+                    .ForMember(model => model.Photos, opt => opt.Ignore());
                cfg.CreateMap<Photo, PhotoForReturnDto>();
                cfg.CreateMap<Photo, PhotoForCreationDto>();
                cfg.CreateMap<PhotoForCreationDto, Photo>();
+               cfg.CreateMap<UserForRegisterDto, User>();
            }).CreateMapper();
     }
 }

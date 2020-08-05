@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import {NgxGalleryOptions} from '@kolkov/ngx-gallery';
 import {NgxGalleryImage} from '@kolkov/ngx-gallery';
 import {NgxGalleryAnimation} from '@kolkov/ngx-gallery';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-detail',
@@ -17,12 +18,16 @@ export class UserDetailComponent implements OnInit {
   user: User;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  createdAt: Date;
+  lastActive: Date;
   constructor(private userService: UserService, private alertify: AlertifyService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private datePipe: DatePipe) {  }
 
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data.user;
+      this.createdAt = this.user.createdAt;
+      this.lastActive = this.user.lastActive;
     });
     this.galleryOptions = [
       {

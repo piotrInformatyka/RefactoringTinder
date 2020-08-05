@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import { JwtModule } from '@auth0/angular-jwt';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import {FileUploadModule} from 'ng2-file-upload';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { DatePipe } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -30,7 +32,8 @@ import { UserListResolver } from './_resolvers/user-list.resolver';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
-import { environment } from 'src/environments/environment';
+import { PhotosComponent } from './users/photos/photos.component';
+import { CommonModule } from '@angular/common';
 
 
 export function tokenGetter(){
@@ -48,18 +51,23 @@ export function tokenGetter(){
       MessagesComponent,
       UserCardComponent,
       UserDetailComponent,
-      UserEditComponent
+      UserEditComponent,
+      PhotosComponent,
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
-
+      FileUploadModule,
       RouterModule.forRoot(appRoutes),
       BrowserAnimationsModule,
       BsDropdownModule.forRoot(),
       TabsModule.forRoot(),
       NgxGalleryModule,
+      ReactiveFormsModule,
+      BsDatepickerModule.forRoot(),
+      BrowserAnimationsModule,
+      CommonModule
    ],
    providers: [
       AuthService,
@@ -70,7 +78,8 @@ export function tokenGetter(){
       UserListResolver,
       UserDetailResolver,
       UserEditResolver,
-      PreventUnsavedChanges
+      PreventUnsavedChanges,
+      DatePipe
    ],
    bootstrap: [
       AppComponent,

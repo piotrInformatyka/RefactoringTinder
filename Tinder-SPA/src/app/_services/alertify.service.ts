@@ -20,4 +20,11 @@ warning(message: string){
 message(message: string){
   alertify.message(message);
 }
+confirm(message: string, okCallback: () => any){
+  alertify.confirm(message, (e) => {
+    if(e){
+      okCallback();
+    }else{}
+  });
+}
 }

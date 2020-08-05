@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj": {}
+    "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj": {
+    "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj",
+        "projectUniqueName": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj",
         "projectName": "Tinder.API",
-        "projectPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\Tinder.API.csproj",
-        "packagesPath": "C:\\Users\\piotr\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\piotr\\source\\repos\\Tinder\\Tinder.API\\obj\\",
+        "projectPath": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj",
+        "packagesPath": "C:\\Users\\Piotr-komputer\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\piotr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Piotr-komputer\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -108,6 +105,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.0.1, 3.0.1]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -116,7 +131,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

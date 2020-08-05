@@ -30,5 +30,10 @@ namespace Tinder.API.Data
             var photo = await _context.Photos.FirstOrDefaultAsync(p => p.Id == id);
             return photo;
         }
+        public async Task<Photo> GetMainPhoto(int userId)
+        {
+            var photo = await _context.Photos.FirstOrDefaultAsync(p => p.IsMain && p.UserId == userId);
+            return photo;
+        }
     }
 }

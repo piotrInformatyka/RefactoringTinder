@@ -80,19 +80,65 @@ namespace Tinder.API.Controllers
             if (await _userRepository.SaveAll())
             {
                 var photoForReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtRoute("GetPhoto", new { id = photo.Id}, photoForReturn);
+                return CreatedAtAction(nameof(GetPhoto), new { id = photo.Id}, photoForReturn);
             }
             return BadRequest("Nie można dodać zdjęcia");
         }
         [HttpGet("{id}", Name = "GetPhoto")]
-        public async Task<IActionResult> GetPhoto(int id)
+        public async Task<ActionResult<PhotoForReturnDto>> GetPhoto([FromRoute]int id)
         {
             var photoFromRepo = await _userRepository.GetPhoto(id);
             var photoForReturn = _mapper.Map<PhotoForReturnDto>(photoFromRepo);
             return Ok(photoForReturn);
         }
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMain(int userId, int id)
+        {
+            var currentId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            if (userId != currentId)
+            {
+                return Unauthorized();
+            }
+            var user = await _userRepository.GetUser(userId);
+            if (!user.Photos.Any(p => p.Id == id))
+                return BadRequest();
+            var photoFromRepo = await _userRepository.GetPhoto(id);
 
+            if (photoFromRepo.IsMain)
+                return BadRequest("To już jest główne zdjęcie");
+            var currentMainPhoto = await _userRepository.GetMainPhoto(userId);
+            currentMainPhoto.IsMain = false;
+            photoFromRepo.IsMain = true;
 
+            if (await _userRepository.SaveAll())
+                return NoContent();
 
+            return BadRequest("Nie można ustawić zdjęcia jako głównego");
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeletePhoto(int userId, int id)
+        {
+            if (userId != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
+                return Unauthorized();
+            var user = await _userRepository.GetUser(userId);
+            if (!user.Photos.Any(p => p.Id == id))
+                return BadRequest();
+            var photoFromRepo = await _userRepository.GetPhoto(id);
+
+            if (photoFromRepo.IsMain)
+                return BadRequest("Nie można usunąć głównego zdjęcia");
+            if (photoFromRepo.public_id != null)
+            {
+                var deleteParams = new DeletionParams(photoFromRepo.public_id);
+                var result = _cloudinary.Destroy(deleteParams);
+                if (result.Result == "ok")
+                    _userRepository.Delete(photoFromRepo);
+            }
+            if (photoFromRepo.public_id == null)
+                _userRepository.Delete(photoFromRepo);
+            if (await _userRepository.SaveAll())
+                return Ok();
+            return BadRequest("Nie udało się usunąć zdjęcia");
+        }
     }
 }

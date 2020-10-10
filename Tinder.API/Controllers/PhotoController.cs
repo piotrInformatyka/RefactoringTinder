@@ -80,7 +80,7 @@ namespace Tinder.API.Controllers
             if (await _userRepository.SaveAll())
             {
                 var photoForReturn = _mapper.Map<PhotoForReturnDto>(photo);
-                return CreatedAtAction(nameof(GetPhoto), new { id = photo.Id}, photoForReturn);
+                return CreatedAtAction (nameof(GetPhoto), new { id = photo.Id}, photoForReturn);
             }
             return BadRequest("Nie można dodać zdjęcia");
         }

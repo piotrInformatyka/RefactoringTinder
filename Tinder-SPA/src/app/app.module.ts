@@ -10,6 +10,9 @@ import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import {FileUploadModule} from 'ng2-file-upload';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { DatePipe } from '@angular/common';
+import { TimeAgoExtPipe } from './_pipes/time-ago-pipe';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 import { AppComponent } from './app.component';
 import { ValueComponent } from './value/value.component';
@@ -34,6 +37,10 @@ import { UserEditResolver } from './_resolvers/user-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { PhotosComponent } from './users/photos/photos.component';
 import { CommonModule } from '@angular/common';
+import { LikesResolver } from './_resolvers/like.resolver';
+import { MessagesResolver } from './_resolvers/messages.resolver';
+import { UserMessagesComponent } from './users/user-messages/user-messages.component';
+
 
 
 export function tokenGetter(){
@@ -53,6 +60,8 @@ export function tokenGetter(){
       UserDetailComponent,
       UserEditComponent,
       PhotosComponent,
+      TimeAgoExtPipe,
+      UserMessagesComponent
    ],
    imports: [
       BrowserModule,
@@ -67,7 +76,9 @@ export function tokenGetter(){
       ReactiveFormsModule,
       BsDatepickerModule.forRoot(),
       BrowserAnimationsModule,
-      CommonModule
+      CommonModule,
+      PaginationModule.forRoot(),
+      ButtonsModule.forRoot()
    ],
    providers: [
       AuthService,
@@ -79,7 +90,9 @@ export function tokenGetter(){
       UserDetailResolver,
       UserEditResolver,
       PreventUnsavedChanges,
-      DatePipe
+      DatePipe,
+      LikesResolver,
+      MessagesResolver
    ],
    bootstrap: [
       AppComponent,

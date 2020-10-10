@@ -4,10 +4,10 @@
    <div class="form-group">
         <label class="control-label" style="margin-right:10px">Jestem: </label>
         <label class="radio-inline">
-            <input  type="radio" value="male" formControlName="gender"> Mężczyzną
+            <input  type="radio" value="mężczyzna" formControlName="gender"> Mężczyzną
         </label>
         <label class="radio-inline">
-            <input class="ml-3" type="radio" value="female" formControlName="gender"> Kobietą
+            <input class="ml-3" type="radio" value="kobieta" formControlName="gender"> Kobietą
         </label>
     </div>
     
@@ -18,8 +18,9 @@
     </div>
 
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Znak zodiaku" formControlName="zodiacSign"
-        [ngClass]="{'is-invalid': registerForm.get('zodiacSign').errors && registerForm.get('zodiacSign').touched}">
+        <select class="form-control" formControlName="zodiacSign" [(ngModel)]="userParams.zodiacSign">
+            <option *ngFor="let zodiacSign of zodiacSignList" [value]="zodiacSign.value">{{zodiacSign.display}}</option>
+        </select>
         <div class="invalid-feedback">Znak zodiaku jest wymagany</div>
     </div>
 

@@ -30,6 +30,60 @@ namespace Tinder.API.Migrations
                     b.ToTable("Values");
                 });
 
+            modelBuilder.Entity("Tinder.API.Models.Like", b =>
+                {
+                    b.Property<int>("UserLikesId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserIsLikedId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("UserLikesId", "UserIsLikedId");
+
+                    b.HasIndex("UserIsLikedId");
+
+                    b.ToTable("Likes");
+                });
+
+            modelBuilder.Entity("Tinder.API.Models.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DateRead")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("DateSent")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("RecipientDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RecipientId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("SenderDeleted")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RecipientId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("Tinder.API.Models.Photo", b =>
                 {
                     b.Property<int>("Id")
@@ -166,6 +220,36 @@ namespace Tinder.API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Tinder.API.Models.Like", b =>
+                {
+                    b.HasOne("Tinder.API.Models.User", "UserIsLiked")
+                        .WithMany("UserLikes")
+                        .HasForeignKey("UserIsLikedId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tinder.API.Models.User", "UserLikes")
+                        .WithMany("UserIsLiked")
+                        .HasForeignKey("UserLikesId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Tinder.API.Models.Message", b =>
+                {
+                    b.HasOne("Tinder.API.Models.User", "Recipient")
+                        .WithMany("MessagesRecived")
+                        .HasForeignKey("RecipientId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tinder.API.Models.User", "Sender")
+                        .WithMany("MessagesSent")
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Tinder.API.Models.Photo", b =>

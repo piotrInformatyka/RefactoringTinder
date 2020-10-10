@@ -8,7 +8,7 @@
 <div class="card-img-wrapper">
   <img src="{{user.photoUrl || '../../../../../assets/360px-Yu-Hwan.png'}}" class="card-img-top" alt="{{user.username}}">
   <ul class="list-inline text-center user-icons animate">
-    <li class="list-inline-item">
+    <li class="list-inline-item" (click)="sendLike(user.id)">
       <button class="btn btn-warning">
         <i class="fa fa-heart"></i>
       </button>
@@ -19,7 +19,7 @@
       </button>
     </li>
     <li class="list-inline-item">
-      <button class="btn btn-warning">
+      <button class="btn btn-warning" [routerLink]="['/uzytkownicy/', user.id]" [queryParams]="{tab: 5}">
         <i class="fa fa-envelope"></i>
       </button>
     </li>

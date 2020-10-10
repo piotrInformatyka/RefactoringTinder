@@ -1,18 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 col-md-8 col-sm-6 "> 
+    <div class="col-lg-12 col-md-8 col-sm-6 ">
       <a href="http://dev-hobby.pl">
-        <img src="../../../assets/baner_poziomy.png" alt="miejscen na baner reklamowy"
-        class="card-img-top mt-2"/>
-      </a>  
+        <img src="../../../assets/baner_poziomy.png" alt="miejscen na baner reklamowy" class="card-img-top mt-2" />
+      </a>
     </div>
   </div>
 </div>
 
 
-<div class="container mt-4" >
+<div class="container mt-4">
   <div class="row">
-    <div class="col-lg-2 col-md-8 col-sm-6 "> 
+    <div class="col-lg-2 col-md-8 col-sm-6 ">
       <a href="http://g-way.pl">
         <img src="../../../assets/banerPion.png" class="card-img-top" />
       </a>
@@ -21,14 +20,71 @@
       </a>
       <a href="http://g-way.pl">
         <img src="../../../assets/banerPion.png" class="card-img-top" />
-      </a> 
+      </a>
     </div>
-    <div class="col-lg-10 col-md-8 col-sm-6 "> 
+    <div class="col-lg-10 col-md-8 col-sm-6 ">
+
+      <div class="text-center mt-3">
+        <h2>Propozycje dla Ciebie - znalezionych pozycji : {{pagination.totalItems}}</h2>
+      </div>
+      <form class="form-inline" #form="ngForm" (ngSubmit)="loadUsers()" novalidate>
+        <div class="form-group">
+          <label for="minAge">Wiek od</label>
+          <input type="number" class="form-control ml-1" style="width: 70px" id="minAge" name="minAge"
+            [(ngModel)]="userParams.minAge">
+        </div>
+
+        <div class="form-group px-2">
+          <label for="maxAge">Wiek do</label>
+          <input type="number" class="form-control ml-1" style="width: 70px" id="maxAge" name="maxAge"
+            [(ngModel)]="userParams.maxAge">
+        </div>
+
+        <div class="form-group px-2">
+          <label for="gender">Płeć</label>
+          <select class="form-control ml-1" style="width: 110px" id="gender" name="gender"
+            [(ngModel)]="userParams.gender">
+            <option *ngFor="let gender of genderList" [value]="gender.value">{{gender.display}}</option>
+          </select>
+        </div>
+
+        <div class="form-group px-2">
+          <label for="zodiacSign">Znak zodiaku:</label>
+          <select class="form-control ml-1" style="width: 110px" id="zodiacSign" name="zodiacSign"
+            [(ngModel)]="userParams.zodiacSign">
+            <option *ngFor="let zodiacSign of zodiacSignList" [value]="zodiacSign.value">{{zodiacSign.display}}</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-left: 10px">Zastosuj filtr</button>
+        <button type="button" class="btn btn-info" style="margin-left: 10px" (click)="resetFilters()">Zresetuj
+          filtr</button>
+      </form>
+      <br>
+
+
       <div class="row">
         <div *ngFor="let user of users" class="col-lg-3 col-md-4 col-sm-6">
           <app-user-card [user]='user'></app-user-card>
         </div>
       </div>
+      <div class="row">
+        <pagination [boundaryLinks]="true" [totalItems]="pagination.totalItems" [itemsPerPage]="pagination.itemsPerPage"
+          [(ngModel)]="pagination.currentPage" (pageChanged)="pageChanged($event)" previousText="&lsaquo;"
+          nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+        </pagination>
+        <div class="col">
+          <div class="btn-group float-right">
+            <button btnRadio="lastActive" [(ngModel)]="userParams.orderBy" (click)="loadUsers()" 
+              type="button" name="orderBy" class="btn btn-primary">Ostatnio aktywni</button>
+            <button btnRadio="created" [(ngModel)]="userParams.orderBy" (click)="loadUsers()" 
+              type="button" name="orderBy" class="btn btn-primary">Najnowsi członkowie</button>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <p>{{pagination.totalPages}}</p>
+    <p>{{pagination.totalItems}}</p>
   </div>
 </div>

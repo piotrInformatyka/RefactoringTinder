@@ -21,7 +21,7 @@
           </div>
           <div>
             <strong>Ostatnia aktywność:</strong>
-            <p>{{ lastActive | date}} </p>
+            <p>{{user?.lastActive | timeAgo }}</p>
           </div>
           <div>
             <strong>Użytkownik od:</strong>
@@ -30,15 +30,15 @@
         </div>
         <div class="card-footer">
           <div class="btn-group d-flex">
-            <button class="btn btn-success w-100">Lubię</button>
-            <button class="btn btn-primary w-100">Wiadomości</button>
+            <button class="btn btn-success w-100" (click)="sendLike(user.id)">Lubię</button>
+            <button class="btn btn-primary w-100" (click)="selectTab(5)">Wiadomości</button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-sm-8">
       <div class="tab-panel">
-        <tabset class="user-tabset">
+        <tabset class="user-tabset" #userTabs>
           <tab heading="Informacje {{user?.username}}">
             <table style="width: 100%;">
               <tr>
@@ -121,7 +121,7 @@
             <ngx-gallery [options]="galleryOptions" [images]="galleryImages" class="ngx-gallery"></ngx-gallery>
           </tab>
           <tab heading="Wiadomości">
-            <p>tutaj beda wiadomosci</p>
+            <app-user-messages [recipientId]="user.id"></app-user-messages>
           </tab>
         </tabset>
       </div>

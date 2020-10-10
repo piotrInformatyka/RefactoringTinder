@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj": {}
+    "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\Tinder.API\\Tinder.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj": {
+    "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\Tinder.API\\Tinder.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj",
+        "projectUniqueName": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\Tinder.API\\Tinder.API.csproj",
         "projectName": "Tinder.API",
-        "projectPath": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\Tinder.API.csproj",
+        "projectPath": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\Tinder.API\\Tinder.API.csproj",
         "packagesPath": "C:\\Users\\Piotr-komputer\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\tinder.api\\obj\\",
+        "outputPath": "C:\\Users\\Piotr-komputer\\source\\repos\\Tinder\\tinder\\Tinder.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Piotr-komputer\\AppData\\Roaming\\NuGet\\NuGet.Config",
